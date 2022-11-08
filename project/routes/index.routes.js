@@ -6,7 +6,9 @@ router.get("/", (req, res, next) => {
   res.render("index");
 });
 
+// GET map page with all the postinos
 router.get("/map", (req, res) => {
+  // Define the locations of the map with the info we want to display in the popup
   const locations = [{
     id: 1,
     name: "Barcelona",
@@ -29,12 +31,15 @@ router.get("/map", (req, res) => {
     img: "https://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/Portugal/Lisbon/lisbon-lead-image.jpg?imwidth=680"
   }]
 
+  // Define the dislay of the map
   const mapCenter = [-3.703339, 40.416729]
   const mapZoom = 5
 
+  // Render the map
   res.render("map", { locations, mapCenter, mapZoom  })
 })
 
+// GET the location details with a marker of the specific location
 router.get("/location/:locationId", (req, res) => {
   const locations = [{
     id: 1,
@@ -58,11 +63,14 @@ router.get("/location/:locationId", (req, res) => {
     img: "https://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/Portugal/Lisbon/lisbon-lead-image.jpg?imwidth=680"
   }]
 
+  // Get the location form all the locations
   const [location ]= locations.filter(loc => loc.id == req.params.locationId)
 
-
+  // Define the display of the map depending on the position of the location
   const mapCenter = location.pos
   const mapZoom = 12
+
+  // Render the location
   res.render("location", { location, mapCenter, mapZoom })
 })
 
