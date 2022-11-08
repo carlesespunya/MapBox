@@ -1,0 +1,26 @@
+<div class="map" id="map"></div>
+
+<div class="hidden map-center">
+  {{mapCenter}}
+</div>
+
+<div class="hidden map-zoom">
+  {{mapZoom}}
+</div>
+
+
+{{#each locations}}
+
+<div class="hidden popup">
+  <img src="{{this.img}}" alt="postcard">
+  <h1>{{this.name}}</h1>
+  <a href="/location/{{this.id}}">See more</a>
+</div>
+
+<div class="hidden pos">
+  {{this.pos}}
+</div>
+
+<div class="marker">
+</div>
+{{/each}}
